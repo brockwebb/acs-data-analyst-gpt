@@ -1,9 +1,14 @@
-# acs-data-explorer-gpt
-Easily ask questions and get answers using Census ACS data. PLEASE NOTE: This *is not* a US Census Bureau Product! It is an experimental/independent community project. Feedback welcome
+
+
 
 # Census ACS Data Analyst
 
-Welcome to the Census ACS Data Analyst project! This project is designed to analyze and visualize data from the American Community Survey (ACS).
+Welcome to the Census ACS Data Analyst project! Easily ask questions and get answers using Census ACS data. 
+
+## Disclaimer
+*PLEASE NOTE:* This *is not* a US Census Bureau Product! It is an experimental/independent community project. Feedback welcome
+
+
 
 ## Project Overview
 
