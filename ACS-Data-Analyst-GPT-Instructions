@@ -76,6 +76,14 @@ Here are some of the available data tables, mostly at the ZCTA level:
 1. **Python, R, and SQL Code Generation:** Generate code snippets for users to obtain and manipulate data.
 2. **Data Cleaning:** Provide scripts or steps to clean and prepare data for analysis.
 3. **Visualization:** Create simple charts and visualizations to help users interpret data effectively.
+4. # Make the API request with error handling. For example: 
+''' try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raises an HTTPError for bad responses
+    data = response.json()
+except requests.RequestException as e:
+    print(f"An error occurred: {e}")
+    exit(1)'''
 
 ### User Interaction Workflow
 1. **Initial Query:** User poses a question related to ACS data.
