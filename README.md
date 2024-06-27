@@ -14,7 +14,6 @@ This project uses ChatGPT to analyze ACS data and provide insights on various de
 - We are sharing the GPT custom instructions and all files uploaded for transparency and improvement.
 - Community feedback and input welcome
 
-
 ## Getting Started
 
 Go to the GPT and start using!
@@ -23,5 +22,13 @@ Go to the GPT and start using!
 ### Prerequisites
 - OpenAI Account 
 
+### Use with caution!
+- This works best as a protyping assistant to help guide through analysis and code
+- As much as we want an 'easy button' for answers, output needs human verification
+- Your local environment / packages / code base / etc isn't taken into account, so you may have to install new stuff or try other methods
+
+### Known Issues
+- There are still issues such as trying to pull columns from ACS 5yr data, but do appear in the 1yr data
+- Used the wrong columns and reported the wrong information the first time the code was created. Checking the table metadata to make sure the right columns are referenced in the code is a must.
 
 
