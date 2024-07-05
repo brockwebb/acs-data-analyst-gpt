@@ -1,0 +1,70 @@
+# This python script will make sure your API key is working 
+# NOTE: you must replace YOUR_KEY with your actual API key
+# Get an API key here: https://api.census.gov/data/key_signup.html
+
+import requests
+import pandas as pd
+
+def test_census_api_2022(api_key):
+    base_url = "https://api.census.gov/data/2022/acs/acs5"
+    
+    params = {
+        "get": "NAME,B01001_001E",
+        "for": "state:*",
+        "key": api_key
+    }
+    
+    try:
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        print("Raw data (first 5 items):")
+        print(data[:5])
+        
+        print("\nData type:", type(data))
+        print("Length of data:", len(data))
+        
+        if len(data) > 1:
+            print("\nLength of first row:", len(data[0]))
+            print("Length of second row:", len(data[1]))
+        
+        # Manually create DataFrame without using numpy
+        columns = data[0]
+        rows = data[1:]
+        df = pd.DataFrame(rows, columns=columns)
+        
+        # Convert population to numeric
+        df['B01001_001E'] = pd.to_numeric(df['B01001_001E'])
+        
+        print("\nFirst few rows of data:")
+        print(df.head())
+        
+        print(f"\nTotal number of states: {len(df)}")
+        
+        print("\nPopulation statistics:")
+        print(df['B01001_001E'].describe())
+        
+        return True
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Error making request: {e}")
+        return False
+    except ValueError as e:
+        print(f"Error parsing JSON response: {e}")
+        return False
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        print("Error type:", type(e))
+        print("Error details:", str(e))
+        return False
+
+# Replace with your actual Census API key
+api_key = YOUR_KEY
+
+if __name__ == "__main__":
+    if test_census_api_2022(api_key):
+        print("\nCensus API test successful!")
+    else:
+        print("\nCensus API test failed.")
